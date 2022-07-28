@@ -1,0 +1,17 @@
+name: Hello World Custom Action Test
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Hello World Custom Action
+        id: hello
+        uses: sudarsana-reddy/hello-world-javascript-action/custom-actions/hello-world
+        with:
+          who-to-greet: "Sudarsan"
+          
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
