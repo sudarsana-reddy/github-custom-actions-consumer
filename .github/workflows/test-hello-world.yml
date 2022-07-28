@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Test Hello World Custom Action
         id: hello
-        uses: sudarsana-reddy/hello-world-javascript-action/custom-actions/hello-world
+        uses: sudarsana-reddy/hello-world-javascript-action@master/custom-actions/hello-world
         with:
           who-to-greet: "Sudarsan"
           
