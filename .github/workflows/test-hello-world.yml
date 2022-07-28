@@ -7,9 +7,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Custom Action
+        run: |
+          git clone https://${{ secrets.PAT }}@github.com/sudarsana-reddy/hello-world-javascript-action.git
       - name: Test Hello World Custom Action
         id: hello
-        uses: sudarsana-reddy/hello-world-javascript-action/custom-actions/hello-world@v1.1.0
+        uses: ./hello-world-javascript-action/custom-actions/hello-world
         with:
           who-to-greet: "Sudarsan"
           
