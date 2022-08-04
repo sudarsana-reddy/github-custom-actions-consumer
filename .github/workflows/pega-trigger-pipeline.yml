@@ -1,6 +1,18 @@
 name: pega-trigger-pipeline
 
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
+     inputs:
+       PEGA_TARGET_APP:
+        default: "MyAppA"
+       PEGA_PROD_NAME:
+        default: "MyAppA_With_MyAppB_Ruleset"
+       PEGA_PROD_VERSION:
+        default: "01.01.01"
+       PEGA_DEPLOYMENT_WAIT_TIME:
+        default: "2"
+       WAIT_TIME_INTERVAL:
+        default: "1"      
 
 jobs:
   pega-trigger-pipeline:
@@ -18,8 +30,8 @@ jobs:
           PEGA_DM_REST_URL: ${{secrets.PEGA_DM_REST_URL}}
           PEGA_DM_CLIENT_ID: ${{secrets.PEGA_DM_CLIENT_ID}}
           PEGA_DM_CLIENT_SECRET: ${{secrets.PEGA_DM_CLIENT_SECRET}}
-          PEGA_TARGET_APP : 'MyAppA'
-          PEGA_PROD_NAME: "MyAppA_With_MyAppB_Ruleset"
-          PEGA_PROD_VERSION: "01.01.01"
-          PEGA_DEPLOYMENT_WAIT_TIME: "2"
-          IDLE_TIME_INTERVAL: "1"   
+          PEGA_TARGET_APP : ${{ inputs.PEGA_TARGET_APP }}
+          PEGA_PROD_NAME: ${{ inputs.PEGA_PROD_NAME }}
+          PEGA_PROD_VERSION: ${{ inputs.PEGA_PROD_VERSION }}
+          PEGA_DEPLOYMENT_WAIT_TIME: ${{ inputs.PEGA_DEPLOYMENT_WAIT_TIME }}
+          WAIT_TIME_INTERVAL: ${{ inputs.WAIT_TIME_INTERVAL }}
