@@ -1,0 +1,25 @@
+name: pega-trigger-pipeline
+
+on: [workflow_dispatch]
+
+jobs:
+  pega-trigger-pipeline:
+    runs-on: ubuntu-latest   
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Checkout Custom Action
+        run: |
+          git clone https://${{ secrets.PAT }}@github.com/sudarsana-reddy/hello-world-javascript-action.git
+      - name: Pega Pipeline Trigger
+        id: pegaUpdate
+        uses: ./hello-world-javascript-action/custom-actions/pega-trigger-workflow
+        with:
+          PEGA_DM_REST_URL: ${{secrets.PEGA_DM_REST_URL}}
+          PEGA_DM_CLIENT_ID: ${{secrets.PEGA_DM_CLIENT_ID}}
+          PEGA_DM_CLIENT_SECRET: ${{secrets.PEGA_DM_CLIENT_SECRET}}
+          PEGA_TARGET_APP : 'MyAppA'
+          PEGA_PROD_NAME: "MyAppA_With_MyAppB_Ruleset"
+          PEGA_PROD_VERSION: "01.01.01"
+          PEGA_DEPLOYMENT_WAIT_TIME: 2
+          IDLE_TIME_INTERVAL: 1   
