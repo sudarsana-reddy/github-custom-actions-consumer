@@ -6,10 +6,10 @@ on:
        BOOMI_REST_URL:
         default: "https://api.boomi.com/api/rest/v1"
        BOOMI_COMPONENTS_JSON:
-        default: "../../../components.json"      
+        default: "./components.json"      
 
 jobs:
-  pega-trigger-pipeline:
+  Bommi-Build-Packages:
     runs-on: ubuntu-latest   
     steps:
       - name: Checkout
@@ -17,8 +17,8 @@ jobs:
       - name: Checkout Custom Action
         run: |
           git clone https://${{ secrets.PAT }}@github.com/sudarsana-reddy/hello-world-javascript-action.git
-      - name: Pega Pipeline Trigger
-        id: pegaUpdate
+      - name: Build Package
+        id: pegaUpdate       
         uses: ./hello-world-javascript-action/custom-actions/boomi-build-package
         with:
           BOOMI_REST_URL: ${{inputs.BOOMI_REST_URL}}
