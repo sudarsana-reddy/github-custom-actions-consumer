@@ -1,0 +1,28 @@
+name: pega-trigger-pipeline
+
+on: 
+  workflow_dispatch:
+     inputs:
+       BOOMI_REST_URL:
+        default: "https://api.boomi.com/api/rest/v1"
+       BOOMI_COMPONENTS_JSON:
+        default: "../../../components.json"      
+
+jobs:
+  pega-trigger-pipeline:
+    runs-on: ubuntu-latest   
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Checkout Custom Action
+        run: |
+          git clone https://${{ secrets.PAT }}@github.com/sudarsana-reddy/hello-world-javascript-action.git
+      - name: Pega Pipeline Trigger
+        id: pegaUpdate
+        uses: ./hello-world-javascript-action/custom-actions/boomi-build-package
+        with:
+          BOOMI_REST_URL: ${{inputs.BOOMI_REST_URL}}
+          BOOMI_TFA_ACCOUNTID: ${{secrets.BOOMI_TFA_ACCOUNTID}}
+          BOOMI_REST_USERNAME: ${{secrets.BOOMI_REST_USERNAME}}
+          BOOMI_REST_PASSWORD : ${{ secrets.BOOMI_REST_PASSWORD }}
+          BOOMI_COMPONENTS_JSON: ${{ inputs.BOOMI_COMPONENTS_JSON }}
