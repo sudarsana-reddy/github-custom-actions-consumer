@@ -35,6 +35,12 @@ jobs:
           path: |
             - boomi-packages.json
             - failed-components.txt
+            
+      - name: List Files
+        if: always()
+        run: |
+          pwd
+          ls -ltr
    
           
      
