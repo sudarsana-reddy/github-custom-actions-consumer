@@ -1,4 +1,4 @@
-name: pega-trigger-pipeline
+name: boomi-pipeline
 
 on: 
   workflow_dispatch:
