@@ -40,6 +40,7 @@ jobs:
   boomi-deplo-packages:
     runs-on: ubuntu-latest
     needs: Boomi-Build-Packages
+    if: always()
     steps:
       - name: Checkout
         uses: actions/checkout@v3
