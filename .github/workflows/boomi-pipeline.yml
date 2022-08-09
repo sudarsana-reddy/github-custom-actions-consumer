@@ -32,16 +32,31 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3.1.0
         with:
+          name: boomi-packages
           path: |
             boomi-packages.json
             failed-components.txt
             
-      - name: List Files
-        if: always()
-        run: |
-          pwd
-          ls -ltr
-   
-          
-     
+  boomi-deplo-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.0
+        with:         
+          name:  boomi-packages        
+              
+      - name: Checkout Custom Action
+        run: |
+          git clone https://${{ secrets.PAT }}@github.com/sudarsana-reddy/hello-world-javascript-action.git
+          
+      - name: Deploy Package
+        id: deployPackage       
+        uses: ./hello-world-javascript-action/custom-actions/boomi-deploy-package
+        with:
+          BOOMI_REST_URL: ${{inputs.BOOMI_REST_URL}}
+          BOOMI_TFA_ACCOUNTID: ${{secrets.BOOMI_TFA_ACCOUNTID}}
+          BOOMI_REST_USERNAME: ${{secrets.BOOMI_REST_USERNAME}}
+          BOOMI_REST_PASSWORD : ${{ secrets.BOOMI_REST_PASSWORD }}            
