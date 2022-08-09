@@ -37,7 +37,7 @@ jobs:
             boomi-packages.json
             failed-components.txt
             
-  boomi-deplo-packages:
+  boomi-deploy-packages:
     runs-on: ubuntu-latest
     needs: Boomi-Build-Packages
     if: always()
