@@ -1,0 +1,28 @@
+name: email-notification
+
+on:  
+  workflow_dispatch:
+  push:
+    paths:      
+      - '.github/workflows/email-notification.yml'
+
+jobs:
+  email-notification:
+     runs-on: ubuntu-latest
+     steps:   
+     - name: Checkout
+       uses: actions/checkout@v3
+       
+     - name: Checkout Custom Action
+        run: |
+          git clone https://${{ secrets.PAT }}@github.com/sudarsana-reddy/hello-world-javascript-action.git 
+          
+     - name: echo the wokflow url
+       uses: ./hello-world-javascript-action/custom-actions/email-notification
+       with:
+        STATUS: ${{ job.status }}
+        SMTP_HOST: "smtp.office365.com"
+        SMTP_PORT: "587"
+        USERNAME: "asreddy@live.com"
+        PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        TO: "asreddy@live.com"
