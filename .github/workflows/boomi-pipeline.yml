@@ -62,4 +62,4 @@ jobs:
           BOOMI_TFA_ACCOUNTID: ${{secrets.BOOMI_TFA_ACCOUNTID}}
           BOOMI_REST_USERNAME: ${{secrets.BOOMI_REST_USERNAME}}
           BOOMI_REST_PASSWORD : ${{ secrets.BOOMI_REST_PASSWORD }}
-          BOOMI_ENVIRONMENT_ID: ""
+          BOOMI_ENVIRONMENT: "dev"
