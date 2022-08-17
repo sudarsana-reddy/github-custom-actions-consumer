@@ -41,7 +41,7 @@ jobs:
         uses: ./hello-world-javascript-action/custom-actions/email-notification
         with:
           STATUS: ${{ job.status }}
-          SMTP_HOST: "smtp.office365.com"
+          SMTP_HOST: "smtp-mail.outlook.com"
           SMTP_PORT: "587"
           SMTP_USERNAME: "asreddy@live.com"
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
