@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
      inputs:
        PEGA_PIEPLINE_ID:
-        default: "Pipeline-QEKH0"
+        default: "Pipeline-KGX86"
        PEGA_PROD_NAME:
-        default: "MyAppA_With_MyAppB_Ruleset"
+        default: "MyAppbprod"
        PEGA_PROD_VERSION:
-        default: "01.01.01"
+        default: "01.01.02"
        PEGA_DEPLOYMENT_WAIT_TIME:
         default: "2"
        WAIT_TIME_INTERVAL:
@@ -35,3 +35,14 @@ jobs:
           PEGA_PROD_VERSION: ${{ inputs.PEGA_PROD_VERSION }}
           PEGA_DEPLOYMENT_WAIT_TIME: ${{ inputs.PEGA_DEPLOYMENT_WAIT_TIME }}
           WAIT_TIME_INTERVAL: ${{ inputs.WAIT_TIME_INTERVAL }}
+          
+      - name: echo the wokflow url
+        uses: ./hello-world-javascript-action/custom-actions/email-notification
+        with:
+          STATUS: ${{ job.status }}
+          SMTP_HOST: "smtp.office365.com"
+          SMTP_PORT: "587"
+          SMTP_USERNAME: "asreddy@live.com"
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          TO: "asreddy@live.com"
+          CC: ""
