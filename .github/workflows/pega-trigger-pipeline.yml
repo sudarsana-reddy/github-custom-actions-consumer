@@ -37,7 +37,7 @@ jobs:
           PEGA_DEPLOYMENT_WAIT_TIME: ${{ inputs.PEGA_DEPLOYMENT_WAIT_TIME }}
           WAIT_TIME_INTERVAL: ${{ inputs.WAIT_TIME_INTERVAL }}
           
-      - name: echo the wokflow url
+      - name: Send Email Notification
         uses: ./hello-world-javascript-action/custom-actions/email-notification
         with:
           STATUS: ${{ job.status }}
