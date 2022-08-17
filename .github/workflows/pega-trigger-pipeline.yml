@@ -25,6 +25,7 @@ jobs:
           git clone https://${{ secrets.PAT }}@github.com/sudarsana-reddy/hello-world-javascript-action.git
       - name: Pega Pipeline Trigger
         id: pegaUpdate
+        if: always()
         uses: ./hello-world-javascript-action/custom-actions/pega-trigger-workflow
         with:
           PEGA_DM_REST_URL: ${{secrets.PEGA_DM_REST_URL}}
