@@ -11,7 +11,7 @@ on:
         default: "01.01.02"
        PEGA_DEPLOYMENT_WAIT_TIME:
         default: "2"
-       WAIT_TIME_INTERVAL:
+       IDLE_TIME_INTERVAL:
         default: "1"      
 
 jobs:
