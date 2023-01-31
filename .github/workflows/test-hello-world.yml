@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Test Hello World Custom Action
         id: hello
-        uses: actions/hello-world-docker-custom-action@v1
+        uses: sudarsana-reddy/hello-world-docker-custom-action@v1
         with:
           who-to-greet: "Sudarsan"
           
