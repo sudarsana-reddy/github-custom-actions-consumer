@@ -1,4 +1,4 @@
-name: Hello World Custom Action Test
+name: Docker Custom Action Test
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checkout Custom Action
         uses: actions/checkout@v3
-      - name: Test Hello World Custom Action
+      - name: Test Dokcer Custom Action
         id: hello
         uses: sudarsana-reddy/hello-world-docker-custom-action@main
         with:
