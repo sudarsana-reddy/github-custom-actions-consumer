@@ -1,0 +1,24 @@
+name: JavaScript (Hello World) Custom Action Test
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Custom Action
+        uses: actions/checkout@v3
+        
+      - name: Checkout Custom Action
+        run: |
+          git clone https://${{ secrets.PAT }}@github.com/sudarsana-reddy/hello-world-javascript-action.git
+          
+      - name: Test Hello World Custom Action
+        id: hello
+        uses: ./hello-world-javascript-action/custom-actions/hello-world
+        with:
+          whotogreet: "Sudarsan"
+          
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
