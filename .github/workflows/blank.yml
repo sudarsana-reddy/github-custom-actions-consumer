@@ -6,10 +6,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Custom Action
-        uses: actions/checkout@v3
-        
+    steps:         
       - name: Checkout Custom Action
         run: |
           git clone https://${{ secrets.PAT }}@github.com/sudarsana-reddy/hello-world-javascript-action.git
