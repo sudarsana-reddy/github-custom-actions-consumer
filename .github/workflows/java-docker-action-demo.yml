@@ -11,5 +11,5 @@ jobs:
         run: echo "Hello World"
         
       - name: Java Docker Action Demo
-        runs: sudarsana-reddy/java-custom-action@main
+        uses: sudarsana-reddy/java-custom-action@main
         
