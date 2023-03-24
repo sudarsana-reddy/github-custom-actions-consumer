@@ -13,7 +13,11 @@ jobs:
       - name: Checkout Custom Action
         run: |
           git clone https://${{ secrets.PAT }}@github.com/sudarsana-reddy/java-custom-action.git
-        
+          
+      - name: List cirrent Dir
+        run: |
+          ls -ltr
+                  
       - name: Java Docker Action Demo
         uses: ./java-custom-action
         
