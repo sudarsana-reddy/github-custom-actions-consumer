@@ -1,0 +1,15 @@
+name: Java Docker Action Demo
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  Java-Docker-Action-Demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello World
+        run: echo "Hello World"
+        
+      - name: Java Docker Action Demo
+        runs: sudarsana-reddy/java-custom-action@main
+        
