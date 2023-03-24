@@ -18,7 +18,9 @@ jobs:
       - name: List cirrent Dir
         run: |
           ls
+          cd java-custom-action 
+          ls
                   
       - name: Java Docker Action Demo
-        uses: ./java-custom-action
+        uses: ./java-custom-action       
         
