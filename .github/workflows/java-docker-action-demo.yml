@@ -10,6 +10,10 @@ jobs:
       - name: Hello World
         run: echo "Hello World"
         
+      - name: Checkout Custom Action
+        run: |
+          git clone https://${{ secrets.PAT }}@github.com/sudarsana-reddy/java-custom-action.git
+        
       - name: Java Docker Action Demo
-        uses: sudarsana-reddy/java-custom-action@v1
+        uses: ./java-custom-action
         
